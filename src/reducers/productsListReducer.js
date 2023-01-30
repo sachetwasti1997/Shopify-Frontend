@@ -5,7 +5,7 @@ const productListSlice = createSlice({
   name: "productList",
   initialState: {
     products: [],
-    isLoading: false,
+    isLoading: true,
     errorRes: null,
   },
   extraReducers(builder) {
@@ -14,14 +14,11 @@ const productListSlice = createSlice({
       state.isLoading = false
       state.errorRes = action.payload
     })
-    .addCase(getAllProducts.pending, (state) => {
-      state.isLoading = true
-    })
     .addCase(getAllProducts.fulfilled, (state, action) => {
       state.isLoading = false
       state.products = action.payload
     })
   },
 });
-
+console.log(productListSlice.reducer);
 export default productListSlice.reducer;
